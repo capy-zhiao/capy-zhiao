@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @capy-zhiao
 - 👀 I’m interested in Mobile Sec, IoT Sec
-- 🐣 24fall phd0
+- 🐣 24fall NorthAmerica phd_0
 - 📫 If you have problems with my projects or just want to collaborate with me, please feel free to contact me: zhiaowei@outlook.com, uranusky1@gmail.com
 
 <!---
