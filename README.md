@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @capy-zhiao
-- 👀 I’m interested in Mobile Sec, LLM Sec
+- 👀 I’m interested in Mobile Sec, LLM for Sec
 - 🐣 24fall University of Waterloo
 - 📫 If you have problems with my projects or just want to collaborate with me, please feel free to contact me: zhiaowei@outlook.com, uranusky1@gmail.com
 
