@@ -1,0 +1,65 @@
+name: Update language card
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 8 * * *"
+
+concurrency:
+  group: profile-language-card
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Check that the stats token is configured
+        env:
+          GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+        run: |
+          if [ -z "$GH_STATS_TOKEN" ]; then
+            echo "::error::Add the GH_STATS_TOKEN repository secret first."
+            exit 1
+          fi
+
+      - name: Generate animated language card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
+        with:
+          card: top-langs
+          token: ${{ secrets.GH_STATS_TOKEN }}
+          path: profile/languages.svg
+          fail_on_error: "true"
+          options: >-
+            {
+              "username": "capy-zhiao",
+              "layout": "normal",
+              "role": "OWNER",
+              "hide": "Jupyter Notebook,HTML,CSS,Procfile",
+              "langs_count": 5,
+              "hide_border": true,
+              "border_radius": 14,
+              "bg_color": "F5F2F8",
+              "title_color": "745A85",
+              "text_color": "514A58",
+              "card_width": 380,
+              "custom_title": "Languages",
+              "disable_animations": false
+            }
+
+      - name: Save updated card
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/languages.svg
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Update language card"
+          git push
