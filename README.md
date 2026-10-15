@@ -7,4 +7,4 @@ You can click the Preview link to take a look at your changes.
 ### Programming Languages
 
 
-![Languages](./profile/languages.svg)
+![Languages](./profile/languages.svg?v=422661576f32)
